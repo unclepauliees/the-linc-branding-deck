@@ -416,7 +416,7 @@ html, body {
 ═══════════════════════════════════════════════════════ */
 .nav-pill {
   position: fixed;
-  top: 28px;
+  top: 22px;
   left: 58%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -618,7 +618,7 @@ html, body {
 
   /* ── Nav pill: abbreviated labels, centered ─────────── */
   .nav-pill {
-    top: 26px;
+    top: 14px;
     left: 58%;
     transform: translateX(-50%);
     padding: 3px;
@@ -1109,7 +1109,16 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
   function scrollToSlideTop() {
     if (window.innerWidth > 767) return;
     var activeSlide = document.querySelector('.slide.is-active');
-    if (activeSlide) activeSlide.scrollTop = 0;
+    if (!activeSlide) return;
+    /* Set immediately and in two deferred frames so video.load() reflows
+       can't win the race and pull the slide back down. */
+    activeSlide.scrollTop = 0;
+    requestAnimationFrame(function () {
+      activeSlide.scrollTop = 0;
+      requestAnimationFrame(function () {
+        activeSlide.scrollTop = 0;
+      });
+    });
   }
 
   function switchVersion(v) {
