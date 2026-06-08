@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE LINC — Branding Project | Echelon Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --ink:      #000000;
+  --bg:       #FFFFFF;
+  --red:      #E52222;
+  --border:   1.5px solid #000000;
+  --rule:     1px solid #000000;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SLIDE SYSTEM
+═══════════════════════════════════════════════════════ */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ECHELON LOGO IMAGE
+═══════════════════════════════════════════════════════ */
+.elogo-img { display: block; object-fit: contain; }
+.elogo-img--lg { height: clamp(40px, 4.5vw, 70px); width: auto; }
+.elogo-img--sm { height: clamp(26px, 2.7vw, 44px); width: auto; }
+
+.slide-logo { padding: 22px 3vw; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════
+   COVER PAGE — PAGE 1
+═══════════════════════════════════════════════════════ */
+.cov-top {
+  display: flex;
+  align-items: flex-end;
+  padding: 30px 4.5vw 0;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.cov-rule {
+  flex: 1;
+  height: 0;
+  border-bottom: var(--rule);
+  margin-bottom: 2px;
+}
+.cov-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: clamp(11px, 0.85vw, 14px);
+  white-space: nowrap;
+  padding-bottom: 1px;
+  letter-spacing: 0.02em;
+}
+
+.cov-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4vw;
+}
+.cov-title {
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 17vw, 320px);
+  line-height: 0.87;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.cov-subtitle {
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: clamp(20px, 6.9vw, 134px);
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-top: 0.03em;
+}
+
+.cov-footer {
+  border-top: var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 4.5vw 16px;
+  flex-shrink: 0;
+}
+.cov-footer-l {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: clamp(8px, 0.68vw, 11px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.cov-footer-r {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(8px, 0.68vw, 11px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cov-footer-r .fw3 { font-weight: 300; }
+.cov-footer-r .fw7 { font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════
+   INNER PAGE HEADER
+═══════════════════════════════════════════════════════ */
+.pg-header {
+  display: grid;
+  grid-template-columns: 18% 1fr 18%;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  flex-shrink: 0;
+  min-height: 76px;
+}
+.pg-hcell {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+}
+.pg-hcell + .pg-hcell {
+  border-left: var(--border);
+}
+.pg-hcell--center { justify-content: center; }
+.pg-hcell--right  { flex-direction: column; align-items: flex-end; justify-content: center; }
+
+.pg-section {
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 46px);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.pg-direction {
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 1.05vw, 17px);
+  line-height: 1.5;
+  text-align: right;
+}
+
+/* ═══════════════════════════════════════════════════════
+   INNER PAGE BODY
+═══════════════════════════════════════════════════════ */
+.pg-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+.pg-body-left {
+  width: 33%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(18px, 3.5vh, 36px) 12px 24px 3vw;
+}
+.pg-body-right {
+  flex: 1;
+  /* Phase 2: drop content here via id="page-N-content" */
+}
+
+/* ═══════════════════════════════════════════════════════
+   PHONE MOCKUP
+═══════════════════════════════════════════════════════ */
+.phone {
+  height: clamp(300px, 55vh, 520px);
+  width: calc(clamp(300px, 55vh, 520px) * 9 / 19);
+  border: 7px solid #1a1a1a;
+  border-radius: 40px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1.5px #303030,
+    0 0 0 1px #444,
+    6px 14px 40px rgba(0,0,0,0.30);
+}
+
+/* Notch */
+.ph-notch-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+.ph-notch {
+  width: 68px;
+  height: 19px;
+  background: #1a1a1a;
+  border-radius: 0 0 11px 11px;
+}
+
+/* Status bar */
+.ph-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 13px 1px;
+  flex-shrink: 0;
+}
+.ph-time {
+  font-size: 8.5px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+}
+.ph-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ph-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+}
+.ph-signal span {
+  display: block;
+  width: 2px;
+  background: #111;
+  border-radius: 1px;
+}
+.ph-signal span:nth-child(1) { height: 3px; }
+.ph-signal span:nth-child(2) { height: 5px; }
+.ph-signal span:nth-child(3) { height: 7px; }
+.ph-signal span:nth-child(4) { height: 9px; }
+.ph-wifi {
+  font-size: 7px;
+  color: #111;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.ph-battery {
+  width: 14px;
+  height: 7px;
+  border: 1.5px solid #222;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.ph-battery::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 4px;
+  background: #222;
+  border-radius: 0 1px 1px 0;
+}
+.ph-battery-fill {
+  width: 78%;
+  height: 3px;
+  background: #222;
+  border-radius: 1px;
+  margin: 0 1px;
+}
+
+/* Instagram app chrome */
+.ig-appbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 9px 5px;
+  border-bottom: 0.5px solid #c0c0c0;
+  flex-shrink: 0;
+}
+.ig-back  { font-size: 18px; font-weight: 300; color: #222; line-height: 1; }
+.ig-title-wrap { text-align: center; }
+.ig-apptitle { font-size: 9.5px; font-weight: 700; font-family: 'Montserrat', sans-serif; color: #111; }
+.ig-apphandle { font-size: 7px; color: #666; font-family: 'Montserrat', sans-serif; }
+.ig-moreicon  { font-size: 13px; color: #444; letter-spacing: -0.05em; }
+
+/* Post header row */
+.ig-postrow {
+  display: flex;
+  align-items: center;
+  padding: 5px 9px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.ig-avi {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #bbb;
+  flex-shrink: 0;
+  border: 1.5px solid #ddd;
+}
+.ig-postmeta { flex: 1; }
+.ig-username  { font-size: 7.5px; font-weight: 700; font-family: 'Montserrat', sans-serif; color: #111; }
+.ig-audiolabel{ font-size: 6px; color: #666; font-family: 'Montserrat', sans-serif; }
+.ig-dotdotdot { font-size: 12px; color: #555; letter-spacing: -0.06em; }
+
+/* Media area — the main content placeholder */
+.ig-media {
+  width: 100%;
+  flex: 1;
+  background: #d8d8d8;
+  min-height: 0;
+  position: relative;
+}
+.sound-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  z-index: 10;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Engagement row */
+.ig-engagerow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 9px 2px;
+  flex-shrink: 0;
+}
+.ig-left-icons { display: flex; gap: 8px; align-items: center; }
+.ig-icoitem {
+  font-size: 12px;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.ig-icocount {
+  font-size: 5.5px;
+  color: #555;
+  font-family: 'Montserrat', sans-serif;
+}
+.ig-bookmark { font-size: 12px; color: #222; }
+
+.ig-likedby {
+  font-size: 6.5px;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  padding: 0 9px 4px;
+  flex-shrink: 0;
+}
+
+/* Second post stub */
+.ig-stub {
+  border-top: 0.5px solid #c8c8c8;
+  display: flex;
+  align-items: center;
+  padding: 5px 9px;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.ig-stub-avi {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #bbb;
+  flex-shrink: 0;
+}
+.ig-stub-meta { flex: 1; }
+.ig-stub-user { font-size: 7px; font-weight: 700; font-family: 'Montserrat', sans-serif; color: #111; }
+.ig-stub-date { font-size: 6px; color: #888; font-family: 'Montserrat', sans-serif; }
+
+/* ═══════════════════════════════════════════════════════
+   PILL NAVIGATION
+═══════════════════════════════════════════════════════ */
+.nav-pill {
+  position: fixed;
+  top: 28px;
+  left: 58%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 980px;
+  background: var(--bg);
+  padding: 4px;
+  gap: 0;
+  user-select: none;
+}
+.npill-item {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  padding: 7px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+  white-space: nowrap;
+}
+.npill-cursor {
+  position: absolute;
+  z-index: 0;
+  top: 4px;
+  height: calc(100% - 8px);
+  border-radius: 980px;
+  background: var(--ink);
+  pointer-events: none;
+  transition: left 220ms cubic-bezier(0.28,0,0.22,1),
+              width 220ms cubic-bezier(0.28,0,0.22,1),
+              opacity 150ms ease;
+}
+
+@media print { .nav-pill { display: none !important; } }
+
+/* ═══════════════════════════════════════════════════════
+   CAPTION ZONE (page 2 right panel)
+═══════════════════════════════════════════════════════ */
+.caption-zone {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(18px, 3.5vh, 36px) 5vw 5vh 4vw;
+  height: 100%;
+}
+.caption-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(9px, 0.75vw, 12px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.6em;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.7em;
+}
+.caption-label span { color: var(--red); }
+.caption-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: clamp(13px, 1.15vw, 18px);
+  line-height: 1.75;
+  color: var(--ink);
+  white-space: pre-line;
+}
+.v-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 2.4em;
+  align-self: flex-start;
+  flex-wrap: wrap;
+}
+.v-tab {
+  padding: 0.55em 1.3em;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(8px, 0.65vw, 10px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background 150ms ease, color 150ms ease;
+}
+.v-tab.is-active { background: var(--ink); color: var(--bg); }
+.v-tab:hover:not(.is-active) { background: rgba(0,0,0,0.08); }
+
+/* ═══════════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════════ */
+@media print {
+  .slide {
+    position: relative !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    page-break-after: always;
+    break-after: page;
+    height: 100vh;
+    width: 100vw;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE (≤ 767px)
+═══════════════════════════════════════════════════════ */
+
+/* Dual-label spans — long shown on desktop, short on mobile */
+.nl-long  { display: inline; }
+.nl-short { display: none; }
+
+@media (max-width: 767px) {
+
+  /* Allow active slide to scroll vertically */
+  .slide.is-active { overflow-y: auto; }
+
+  /* ── Cover ─────────────────────────────────────────── */
+  .cov-top { padding-top: 18px; }
+  .elogo-img--lg { height: clamp(30px, 9vw, 50px); }
+  .cov-footer { padding: 8px 4vw 14px; }
+  .cov-footer-l,
+  .cov-footer-r { font-size: clamp(9px, 2.4vw, 12px); }
+
+  /* ── Inner slide logo strip ─────────────────────────── */
+  .slide-logo { padding: 14px 4vw 10px; }
+
+  /* ── Inner slide body: stack phone above caption ───── */
+  .pg-body { flex-direction: column; overflow-y: visible; }
+
+  .pg-body-left {
+    width: 100%;
+    padding: 10px 4vw 6px;
+    justify-content: center;
+  }
+
+  .pg-body-right {
+    width: 100%;
+    flex: none;
+    padding-bottom: 72px;   /* clearance for fixed nav */
+  }
+
+  /* Phone: height-capped so caption still shows */
+  .phone {
+    width: calc(min(42vh, 260px) * 9 / 19);
+    height: min(42vh, 260px);
+    border-radius: 26px;
+    border-width: 5px;
+  }
+
+  /* ── Caption ───────────────────────────────────────── */
+  .caption-zone {
+    padding: 14px 5vw 16px;
+  }
+  .caption-label { font-size: clamp(10px, 2.8vw, 12px); }
+  .caption-text  { font-size: clamp(13px, 3.8vw, 16px); line-height: 1.65; }
+  .v-tab         { font-size: clamp(10px, 2.8vw, 12px); padding: 0.55em 1.2em; }
+
+  /* ── Nav pill: abbreviated labels, centered ─────────── */
+  .nav-pill {
+    top: 26px;
+    left: 58%;
+    transform: translateX(-50%);
+    padding: 3px;
+  }
+  .npill-item {
+    font-size: 9px;
+    padding: 6px 10px;
+    letter-spacing: 0.08em;
+  }
+  .nl-long  { display: none; }
+  .nl-short { display: inline; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════════════ -->
+<section class="slide is-active" id="slide-1" data-screen-label="01 Cover">
+
+  <!-- Top bar: logo only -->
+  <div class="cov-top">
+    <img class="elogo-img elogo-img--lg" src="mq56rt4e-Echelon-Agency.png" alt="Echelon Agency">
+  </div>
+
+  <!-- Hero headline -->
+  <div class="cov-hero">
+    <div class="cov-title">THE LINC</div>
+    <div class="cov-subtitle">BRANDING PROJECT</div>
+  </div>
+
+  <!-- Footer bar -->
+  <div class="cov-footer">
+    <div class="cov-footer-l">IG LOGO CONTEST - MEDIA POST OPTIONS</div>
+    <div class="cov-footer-r">
+      <span class="fw3">CLIENT: </span><span class="fw7">CITY OF NEW ROCHELLE</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2 — CREATIVE / Direction 1: Civic Minimal
+════════════════════════════════════════════════════ -->
+<section class="slide" id="slide-2" data-screen-label="02 Direction 1 Civic Minimal">
+
+  <div class="slide-logo">
+    <img class="elogo-img elogo-img--lg" src="mq56rt4e-Echelon-Agency.png" alt="Echelon Agency">
+  </div>
+
+  <div class="pg-body">
+    <div class="pg-body-left">
+      <div class="phone">
+        <div class="ph-notch-row"><div class="ph-notch"></div></div>
+        <div class="ph-status">
+          <span class="ph-time">1:24</span>
+          <div class="ph-icons">
+            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+            <span class="ph-wifi">WiFi</span>
+            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+          </div>
+        </div>
+        <div class="ig-appbar">
+          <div class="ig-back">‹</div>
+          <div class="ig-title-wrap">
+            <div class="ig-apptitle">Posts</div>
+            <div class="ig-apphandle">newrochelleny</div>
+          </div>
+          <div class="ig-moreicon">···</div>
+        </div>
+        <div class="ig-postrow">
+          <div class="ig-avi"></div>
+          <div class="ig-postmeta">
+            <div class="ig-username">newrochelleny ✓</div>
+            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+        <div class="ig-media">
+          <video id="linc-video" autoplay="" loop="" muted="" playsinline="" style="width:100%;height:100%;display:block;object-fit:cover;">
+            <source src="mq5989hk-LINC-Cinematic-Campaign-Reel-_1_.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" id="sound-btn" title="Toggle sound" aria-label="Toggle sound">🔇</button>
+        </div>
+        <div class="ig-engagerow">
+          <div class="ig-left-icons">
+            <span class="ig-icoitem">♡</span>
+            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
+            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
+          </div>
+          <span class="ig-bookmark">△</span>
+        </div>
+        <div class="ig-likedby">Liked by b_yunique and others</div>
+        <div class="ig-stub">
+          <div class="ig-stub-avi"></div>
+          <div class="ig-stub-meta">
+            <div class="ig-stub-user">newrochelleny ✓</div>
+            <div class="ig-stub-date">April 10</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-body-right content-zone" id="page-2-content">
+      <div class="caption-zone">
+        <div class="caption-label" id="caption-label">POST 1 — CAPTION V1</div>
+        <div class="caption-text" id="caption-text">This one’s for you, New Rochelle. 🌳
+The LINC isn’t just a park. It’s a promise — that Lincoln Avenue gets the investment, the care, and the identity it deserves. That our neighborhoods stay ours.
+
+Right now, we need something from you: your opinion.
+
+Two logo designs are on the table. Both were built with this community in mind. But only the community can choose which one truly represents home.
+
+Swipe through. See both options. And when we drop the vote — make it count.
+
+Because this is your LINC. From the ground up. 💜🧡💚</div>
+        <div class="v-tabs">
+          <button class="v-tab is-active" id="v-tab-1">POST 1</button>
+          <button class="v-tab" id="v-tab-2">POST 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3 — CREATIVE / Direction 2: Community Mosaic
+════════════════════════════════════════════════════ -->
+<section class="slide" id="slide-3" data-screen-label="03 Direction 2 Community Mosaic">
+
+  <div class="slide-logo">
+    <img class="elogo-img elogo-img--lg" src="mq56rt4e-Echelon-Agency.png" alt="Echelon Agency">
+  </div>
+
+  <div class="pg-body">
+    <div class="pg-body-left">
+      <div class="phone">
+        <div class="ph-notch-row"><div class="ph-notch"></div></div>
+        <div class="ph-status">
+          <span class="ph-time">1:24</span>
+          <div class="ph-icons">
+            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+            <span class="ph-wifi">WiFi</span>
+            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+          </div>
+        </div>
+        <div class="ig-appbar">
+          <div class="ig-back">‹</div>
+          <div class="ig-title-wrap">
+            <div class="ig-apptitle">Posts</div>
+            <div class="ig-apphandle">newrochelleny</div>
+          </div>
+          <div class="ig-moreicon">···</div>
+        </div>
+        <div class="ig-postrow">
+          <div class="ig-avi"></div>
+          <div class="ig-postmeta">
+            <div class="ig-username">newrochelleny ✓</div>
+            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+        <div class="ig-media">
+          <video id="linc-video-3" autoplay loop muted playsinline style="width:100%;height:100%;display:block;object-fit:cover;">
+            <source src="mq5bqdv0-THE-LINC-Campaign---Reference-Style-Recreation-_1_.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" id="sound-btn-3" title="Toggle sound" aria-label="Toggle sound">🔇</button>
+        </div>
+        <div class="ig-engagerow">
+          <div class="ig-left-icons">
+            <span class="ig-icoitem">♡</span>
+            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
+            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
+          </div>
+          <span class="ig-bookmark">△</span>
+        </div>
+        <div class="ig-likedby">Liked by b_yunique and others</div>
+        <div class="ig-stub">
+          <div class="ig-stub-avi"></div>
+          <div class="ig-stub-meta">
+            <div class="ig-stub-user">newrochelleny ✓</div>
+            <div class="ig-stub-date">April 10</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-body-right content-zone" id="page-3-content">
+      <div class="caption-zone">
+        <div class="caption-label" id="caption-label-3">POST 1 — CAPTION V1</div>
+        <div class="caption-text" id="caption-text-3">Your voice. Your LINC. 🗣️✨
+New Rochelle, it's time to choose the logo that will represent our community for years to come.
+Two finalists. One choice. YOUR choice.
+
+👉 Swipe through to see both options, then vote in the poll below.
+
+Logo A or Logo B? The future identity of The LINC is in your hands.
+
+Vote now — this is your moment to shape our shared civic space. 🏙️💜</div>
+        <div class="v-tabs">
+          <button class="v-tab is-active" id="v-tab-1-3">POST 1</button>
+          <button class="v-tab" id="v-tab-2-3">POST 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 4 — CREATIVE / Direction 3: Community Color
+════════════════════════════════════════════════════ -->
+<section class="slide" id="slide-4" data-screen-label="04 Direction 3 Community Color">
+
+  <div class="slide-logo">
+    <img class="elogo-img elogo-img--lg" src="mq56rt4e-Echelon-Agency.png" alt="Echelon Agency">
+  </div>
+
+  <div class="pg-body">
+    <div class="pg-body-left">
+      <div class="phone">
+        <div class="ph-notch-row"><div class="ph-notch"></div></div>
+        <div class="ph-status">
+          <span class="ph-time">1:24</span>
+          <div class="ph-icons">
+            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+            <span class="ph-wifi">WiFi</span>
+            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+          </div>
+        </div>
+        <div class="ig-appbar">
+          <div class="ig-back">‹</div>
+          <div class="ig-title-wrap">
+            <div class="ig-apptitle">Posts</div>
+            <div class="ig-apphandle">newrochelleny</div>
+          </div>
+          <div class="ig-moreicon">···</div>
+        </div>
+        <div class="ig-postrow">
+          <div class="ig-avi"></div>
+          <div class="ig-postmeta">
+            <div class="ig-username">newrochelleny ✓</div>
+            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+        <div class="ig-media" style="position:relative;">
+          <video id="linc-video-4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="mq5byyv2-The-Linc-IG-Contest---Option-2-w_Music-_1_.mp4" type="video/mp4">
+          </video>
+          <button id="sound-btn-4" style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;" aria-label="Toggle sound">🔇</button>
+        </div>
+        <div class="ig-engagerow">
+          <div class="ig-left-icons">
+            <span class="ig-icoitem">♡</span>
+            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
+            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
+          </div>
+          <span class="ig-bookmark">△</span>
+        </div>
+        <div class="ig-likedby">Liked by b_yunique and others</div>
+        <div class="ig-stub">
+          <div class="ig-stub-avi"></div>
+          <div class="ig-stub-meta">
+            <div class="ig-stub-user">newrochelleny ✓</div>
+            <div class="ig-stub-date">April 10</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-body-right content-zone" id="page-4-content">
+      <div class="caption-zone">
+        <div class="caption-label" id="caption-label-4">POST 1 — CAPTION V1</div>
+        <p class="caption-text" id="caption-text-4">This is YOUR LINC. This is YOUR choice. 🧡
+We've designed two incredible logo options — now it's time for the New Rochelle community to decide which one represents us best.
+Logo A or Logo B?
+Tap the poll sticker above and cast your vote. Your input matters more than you know.
+Together, we're building something special. 🙌</p>
+        <div class="v-tabs">
+          <button class="v-tab is-active" id="v-tab-1-4">POST 1</button>
+          <button class="v-tab" id="v-tab-2-4">POST 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 5 — CREATIVE / Direction 4: Bold Ballot
+════════════════════════════════════════════════════ -->
+<section class="slide" id="slide-5" data-screen-label="05 Direction 4 Bold Ballot">
+
+  <div class="slide-logo">
+    <img class="elogo-img elogo-img--lg" src="mq56rt4e-Echelon-Agency.png" alt="Echelon Agency">
+  </div>
+
+  <div class="pg-body">
+    <div class="pg-body-left">
+      <div class="phone">
+        <div class="ph-notch-row"><div class="ph-notch"></div></div>
+        <div class="ph-status">
+          <span class="ph-time">1:24</span>
+          <div class="ph-icons">
+            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+            <span class="ph-wifi">WiFi</span>
+            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+          </div>
+        </div>
+        <div class="ig-appbar">
+          <div class="ig-back">‹</div>
+          <div class="ig-title-wrap">
+            <div class="ig-apptitle">Posts</div>
+            <div class="ig-apphandle">newrochelleny</div>
+          </div>
+          <div class="ig-moreicon">···</div>
+        </div>
+        <div class="ig-postrow">
+          <div class="ig-avi"></div>
+          <div class="ig-postmeta">
+            <div class="ig-username">newrochelleny ✓</div>
+            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+        <div class="ig-media" style="position:relative;">
+          <video id="linc-video-5" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="mq5c9wg7-LINC-Bold-Ballot-Campaign-Video---Music-Only.mp4" type="video/mp4">
+          </video>
+          <button id="sound-btn-5" style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;" aria-label="Toggle sound">🔇</button>
+        </div>
+        <div class="ig-engagerow">
+          <div class="ig-left-icons">
+            <span class="ig-icoitem">♡</span>
+            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
+            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
+          </div>
+          <span class="ig-bookmark">△</span>
+        </div>
+        <div class="ig-likedby">Liked by b_yunique and others</div>
+        <div class="ig-stub">
+          <div class="ig-stub-avi"></div>
+          <div class="ig-stub-meta">
+            <div class="ig-stub-user">newrochelleny ✓</div>
+            <div class="ig-stub-date">April 10</div>
+          </div>
+          <div class="ig-dotdotdot">···</div>
+        </div>
+      </div>
+    </div>
+    <div class="pg-body-right content-zone" id="page-5-content">
+      <div class="caption-zone">
+        <div class="caption-label" id="caption-label-5">POST 1 — CAPTION V1</div>
+        <p class="caption-text" id="caption-text-5">This isn't just a logo. It's a symbol of who we are. 💛
+The LINC is being built BY New Rochelle, FOR New Rochelle — and now we're asking you to help us choose the mark that will represent this vision for generations to come.
+Two designs. Two directions. One community decision.
+Your voice matters.
+Your LINC. Your choice.
+Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
+        <div class="v-tabs">
+          <button class="v-tab is-active" id="v-tab-1-5">POST 1</button>
+          <button class="v-tab" id="v-tab-2-5">POST 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION DOTS
+════════════════════════════════════════════════════ -->
+<nav aria-label="Slide navigation">
+  <ul class="nav-pill" id="nav-pill">
+    <li class="npill-item" data-idx="0" tabindex="0"><span class="nl-long">Cover</span><span class="nl-short">CVR</span></li>
+    <li class="npill-item" data-idx="1" tabindex="0"><span class="nl-long">Civic Minimal</span><span class="nl-short">DIR 1</span></li>
+    <li class="npill-item" data-idx="2" tabindex="0"><span class="nl-long">Community Mosaic</span><span class="nl-short">DIR 2</span></li>
+    <li class="npill-item" data-idx="3" tabindex="0"><span class="nl-long">Community Color</span><span class="nl-short">DIR 3</span></li>
+    <li class="npill-item" data-idx="4" tabindex="0"><span class="nl-long">Bold Ballot</span><span class="nl-short">DIR 4</span></li>
+    <li class="npill-cursor" id="npill-cursor"></li>
+  </ul>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+
+  var slides = Array.from(document.querySelectorAll('.slide'));
+  var items  = Array.from(document.querySelectorAll('.npill-item'));
+  var cursor = document.getElementById('npill-cursor');
+  var pill   = document.getElementById('nav-pill');
+  var KEY    = 'linc-deck-pos';
+  var cur    = 0;
+
+  try {
+    var stored = parseInt(localStorage.getItem(KEY), 10);
+    if (!isNaN(stored) && stored >= 0 && stored < slides.length) cur = stored;
+  } catch (_) {}
+
+  function placeCursor(el, opacity) {
+    cursor.style.left    = el.offsetLeft + 'px';
+    cursor.style.width   = el.getBoundingClientRect().width + 'px';
+    cursor.style.opacity = opacity === undefined ? '1' : String(opacity);
+  }
+
+  function show(n) {
+    n = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.remove('is-active');
+    cur = n;
+    slides[cur].classList.add('is-active');
+    placeCursor(items[cur]);
+    try { localStorage.setItem(KEY, String(cur)); } catch (_) {}
+  }
+
+  items.forEach(function (item, i) {
+    item.addEventListener('mouseenter', function () { placeCursor(item); });
+    item.addEventListener('click',      function () { show(i); });
+    item.addEventListener('keydown',    function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(i); } });
+  });
+
+  pill.addEventListener('mouseleave', function () { placeCursor(items[cur]); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && e.target.classList.contains('npill-item')) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown':
+        e.preventDefault(); show(cur + 1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); show(cur - 1); break;
+    }
+  });
+
+  /* Touch swipe: horizontal swipe > 50px AND dominant axis triggers nav */
+  var txStart = 0, tyStart = 0;
+  document.addEventListener('touchstart', function(e) {
+    txStart = e.touches[0].clientX;
+    tyStart = e.touches[0].clientY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - txStart;
+    var dy = e.changedTouches[0].clientY - tyStart;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      show(cur + (dx < 0 ? 1 : -1));
+    }
+  }, {passive: true});
+
+  /* Initial render — wait one frame so offsetLeft is computed */
+  requestAnimationFrame(function () {
+    cursor.style.transition = 'none';
+    placeCursor(items[cur]);
+    requestAnimationFrame(function () {
+      cursor.style.transition = '';
+      slides.forEach(function (s, i) { s.classList.toggle('is-active', i === cur); });
+    });
+  });
+
+  /* Sound toggle */
+  var video    = document.getElementById('linc-video');
+  var soundBtn = document.getElementById('sound-btn');
+  if (video && soundBtn) {
+    soundBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      soundBtn.textContent = video.muted ? '🔇' : '🔊';
+    });
+  }
+
+  /* Caption V1 / V2 two-tab toggle */
+  var vTab1        = document.getElementById('v-tab-1');
+  var vTab2        = document.getElementById('v-tab-2');
+  var captionText  = document.getElementById('caption-text');
+  var captionLabel = document.getElementById('caption-label');
+
+  var V1_SRC  = 'mq5989hk-LINC-Cinematic-Campaign-Reel-_1_.mp4';
+  var V2_SRC  = 'mq59tk1a-THE-LINC-Campaign-Reel---Premium-_1_.mp4';
+  var V1_COPY = `This one's for you, New Rochelle. 🌳\nThe LINC isn't just a park. It's a promise — that Lincoln Avenue gets the investment, the care, and the identity it deserves. That our neighborhoods stay ours.\n\nRight now, we need something from you: your opinion.\n\nTwo logo designs are on the table. Both were built with this community in mind. But only the community can choose which one truly represents home.\n\nSwipe through. See both options. And when we drop the vote — make it count.\n\nBecause this is your LINC. From the ground up. 💜🧡💚`;
+  var V2_COPY = `New Rochelle is changing. The question is — what does that look like?\n\nThe LINC is one of the most significant civic projects this city has seen in a generation. And right now, the community gets a say in how it shows up to the world.\n\nTwo logos. One vote. Yours.\n\nSwipe → See the options → Vote in our next post.\n\nDon't sit this one out.`;
+
+  function switchVersion(v) {
+    if (!video || !captionText) return;
+    var muted = video.muted;
+    vTab1.classList.toggle('is-active', v === 1);
+    vTab2.classList.toggle('is-active', v === 2);
+    captionText.textContent = v === 1 ? V1_COPY : V2_COPY;
+    if (captionLabel) captionLabel.textContent = v === 1 ? 'POST 1 — CAPTION V1' : 'POST 2 — CAPTION V2';
+    video.src = v === 1 ? V1_SRC : V2_SRC;
+    video.muted = muted;
+    video.load();
+    video.play().catch(function(){});
+    if (soundBtn) soundBtn.textContent = muted ? '🔇' : '🔊';
+  }
+
+  if (vTab1 && vTab2 && captionText && video) {
+    vTab1.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(1); });
+    vTab2.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(2); });
+  }
+
+  // ── Slide 3 (Community Mosaic) sound + tabs ──
+  var video3    = document.getElementById('linc-video-3');
+  var soundBtn3 = document.getElementById('sound-btn-3');
+  var vTab1_3   = document.getElementById('v-tab-1-3');
+  var vTab2_3   = document.getElementById('v-tab-2-3');
+  var capText3  = document.getElementById('caption-text-3');
+  var capLabel3 = document.getElementById('caption-label-3');
+
+  var S3_V1_SRC  = 'mq5bqdv0-THE-LINC-Campaign---Reference-Style-Recreation-_1_.mp4';
+  var S3_V2_SRC  = 'mq5bt79i-THE-LINC-Campaign---Reference-Style-Match-_1_.mp4';
+  var S3_V1_COPY = `Your voice. Your LINC. 🗣️✨\nNew Rochelle, it's time to choose the logo that will represent our community for years to come.\nTwo finalists. One choice. YOUR choice.\n\n👉 Swipe through to see both options, then vote in the poll below.\n\nLogo A or Logo B? The future identity of The LINC is in your hands.\n\nVote now — this is your moment to shape our shared civic space. 🏙️💜`;
+  var S3_V2_COPY = `The community has spoken — now it's YOUR turn to choose the final LINC logo.\n\nHere's how: 1️⃣ Tap the poll sticker above 2️⃣ Choose Logo A or Logo B 3️⃣ Submit your vote\n\nIt takes 5 seconds. Your voice shapes our identity. 🧡\n\nDon't miss your chance to be part of New Rochelle history.`;
+
+  if (soundBtn3 && video3) {
+    soundBtn3.addEventListener('click', function (e) {
+      e.stopPropagation();
+      video3.muted = !video3.muted;
+      soundBtn3.textContent = video3.muted ? '🔇' : '🔊';
+    });
+  }
+
+  function switchVersion3(v) {
+    var muted3 = video3 ? video3.muted : true;
+    [vTab1_3, vTab2_3].forEach(function(t, i) { if(t) t.classList.toggle('is-active', i + 1 === v); });
+    if (capText3)  capText3.textContent  = v === 1 ? S3_V1_COPY : S3_V2_COPY;
+    if (capLabel3) capLabel3.textContent = v === 1 ? 'POST 1 — CAPTION V1' : 'POST 2 — CAPTION V2';
+    if (video3 && (v === 2 ? S3_V2_SRC : S3_V1_SRC)) {
+      video3.src = v === 1 ? S3_V1_SRC : S3_V2_SRC;
+      video3.muted = muted3;
+      video3.load();
+      video3.play().catch(function(){});
+      if (soundBtn3) soundBtn3.textContent = muted3 ? '🔇' : '🔊';
+    }
+  }
+
+  if (vTab1_3 && vTab2_3) {
+    vTab1_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(1); });
+    vTab2_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(2); });
+  }
+
+  // ── Slide 4 (Community Color) sound + tabs ──
+  var video4    = document.getElementById('linc-video-4');
+  var soundBtn4 = document.getElementById('sound-btn-4');
+  var vTab1_4   = document.getElementById('v-tab-1-4');
+  var vTab2_4   = document.getElementById('v-tab-2-4');
+  var capText4  = document.getElementById('caption-text-4');
+  var capLabel4 = document.getElementById('caption-label-4');
+
+  var S4_V1_SRC  = 'mq5byyv2-The-Linc-IG-Contest---Option-2-w_Music-_1_.mp4';
+  var S4_V2_SRC  = 'mq5c48cp-LINC-Community-Mosaic-Campaign-Video-Post-2.mp4';
+  var S4_V1_COPY = `This is YOUR LINC. This is YOUR choice. 🧡\nWe've designed two incredible logo options — now it's time for the New Rochelle community to decide which one represents us best.\nLogo A or Logo B?\nTap the poll sticker above and cast your vote. Your input matters more than you know.\nTogether, we're building something special. 🙌`;
+  var S4_V2_COPY = `⏰ Time to vote! ⏰\nThe LINC logo decision is in YOUR hands, New Rochelle.\nTwo finalists. One community. One choice.\nVote in the poll above and help us choose the mark that will represent The LINC for years to come.\nYour input matters. Don't miss your chance. 🗳️✨`;
+
+  if (soundBtn4 && video4) {
+    soundBtn4.addEventListener('click', function (e) {
+      e.stopPropagation();
+      video4.muted = !video4.muted;
+      soundBtn4.textContent = video4.muted ? '🔇' : '🔊';
+    });
+  }
+
+  function switchVersion4(v) {
+    var muted4 = video4 ? video4.muted : true;
+    [vTab1_4, vTab2_4].forEach(function(t, i) { if(t) t.classList.toggle('is-active', i + 1 === v); });
+    if (capText4)  capText4.textContent  = v === 1 ? S4_V1_COPY : S4_V2_COPY;
+    if (capLabel4) capLabel4.textContent = v === 1 ? 'POST 1 — CAPTION V1' : 'POST 2 — CAPTION V2';
+    if (video4 && (v === 1 ? S4_V1_SRC : S4_V2_SRC)) {
+      video4.src = v === 1 ? S4_V1_SRC : S4_V2_SRC;
+      video4.muted = muted4;
+      video4.load();
+      video4.play().catch(function(){});
+      if (soundBtn4) soundBtn4.textContent = muted4 ? '🔇' : '🔊';
+    }
+  }
+
+  if (vTab1_4 && vTab2_4) {
+    vTab1_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(1); });
+    vTab2_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(2); });
+  }
+
+  // ── Slide 5 (Bold Ballot) sound + tabs ──
+  var video5    = document.getElementById('linc-video-5');
+  var soundBtn5 = document.getElementById('sound-btn-5');
+  var vTab1_5   = document.getElementById('v-tab-1-5');
+  var vTab2_5   = document.getElementById('v-tab-2-5');
+  var capText5  = document.getElementById('caption-text-5');
+  var capLabel5 = document.getElementById('caption-label-5');
+
+  var S5_V1_SRC  = 'mq5c9wg7-LINC-Bold-Ballot-Campaign-Video---Music-Only.mp4';
+  var S5_V2_SRC  = 'mq5cdjyr-LINC-IG-Logo-Contest_Option-4---Post-1-w_Voiceover.mp4';
+  var S5_V1_COPY = `This isn't just a logo. It's a symbol of who we are. 💛\nThe LINC is being built BY New Rochelle, FOR New Rochelle — and now we're asking you to help us choose the mark that will represent this vision for generations to come.\nTwo designs. Two directions. One community decision.\nYour voice matters.\nYour LINC. Your choice.\nVote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿`;
+  var S5_V2_COPY = `Every great community space starts with a great identity. 💛\nThe LINC is being built BY New Rochelle, FOR New Rochelle — and now we're asking you to help us choose the logo that will represent this vision.\nLogo A or Logo B?\nYour input matters. Your voice shapes our future.\nVote in the poll now. 👆`;
+
+  if (soundBtn5 && video5) {
+    soundBtn5.addEventListener('click', function (e) {
+      e.stopPropagation();
+      video5.muted = !video5.muted;
+      soundBtn5.textContent = video5.muted ? '🔇' : '🔊';
+    });
+  }
+
+  function switchVersion5(v) {
+    var muted5 = video5 ? video5.muted : true;
+    [vTab1_5, vTab2_5].forEach(function(t, i) { if(t) t.classList.toggle('is-active', i + 1 === v); });
+    if (capText5)  capText5.textContent  = v === 1 ? S5_V1_COPY : S5_V2_COPY;
+    if (capLabel5) capLabel5.textContent = v === 1 ? 'POST 1 — CAPTION V1' : 'POST 2 — CAPTION V2';
+    var newSrc = v === 1 ? S5_V1_SRC : S5_V2_SRC;
+    if (video5 && newSrc) {
+      video5.src = newSrc;
+      video5.muted = muted5;
+      video5.load();
+      video5.play().catch(function(){});
+      if (soundBtn5) soundBtn5.textContent = muted5 ? '🔇' : '🔊';
+    }
+  }
+
+  if (vTab1_5 && vTab2_5) {
+    vTab1_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(1); });
+    vTab2_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(2); });
+  }
+
+}());
+</script>
+
+
+
+</body></html>
