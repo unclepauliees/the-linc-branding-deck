@@ -1121,8 +1121,8 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
   }
 
   if (vTab1 && vTab2 && captionText && video) {
-    vTab1.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(1); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
-    vTab2.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(2); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    vTab1.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(1); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
+    vTab2.addEventListener('click', function (e) { e.stopPropagation(); switchVersion(2); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
   }
 
   // ── Slide 3 (Community Mosaic) sound + tabs ──
@@ -1161,8 +1161,8 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
   }
 
   if (vTab1_3 && vTab2_3) {
-    vTab1_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(1); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
-    vTab2_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(2); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    vTab1_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(1); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
+    vTab2_3.addEventListener('click', function (e) { e.stopPropagation(); switchVersion3(2); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
   }
 
   // ── Slide 4 (Community Color) sound + tabs ──
@@ -1201,8 +1201,8 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
   }
 
   if (vTab1_4 && vTab2_4) {
-    vTab1_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(1); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
-    vTab2_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(2); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    vTab1_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(1); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
+    vTab2_4.addEventListener('click', function (e) { e.stopPropagation(); switchVersion4(2); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
   }
 
   // ── Slide 5 (Bold Ballot) sound + tabs ──
@@ -1242,8 +1242,8 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
   }
 
   if (vTab1_5 && vTab2_5) {
-    vTab1_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(1); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
-    vTab2_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(2); if (window.innerWidth <= 767) { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    vTab1_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(1); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
+    vTab2_5.addEventListener('click', function (e) { e.stopPropagation(); switchVersion5(2); if (window.innerWidth <= 767) { setTimeout(function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100); } });
   }
 
 }());
