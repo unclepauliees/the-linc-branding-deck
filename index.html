@@ -1108,17 +1108,17 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
 
   function scrollToSlideTop() {
     if (window.innerWidth > 767) return;
-    var activeSlide = document.querySelector('.slide.is-active');
-    if (!activeSlide) return;
-    /* Set immediately and in two deferred frames so video.load() reflows
-       can't win the race and pull the slide back down. */
-    activeSlide.scrollTop = 0;
-    requestAnimationFrame(function () {
-      activeSlide.scrollTop = 0;
-      requestAnimationFrame(function () {
-        activeSlide.scrollTop = 0;
-      });
-    });
+    /* Re-query each time so we always get the active slide, not a stale ref */
+    function doScroll() {
+      var s = document.querySelector('.slide.is-active');
+      if (s) s.scrollTop = 0;
+    }
+    doScroll();
+    /* Safari: video.play() focuses the video element and auto-scrolls to it.
+       The timeouts outlast that focus-scroll cycle (typically < 200ms). */
+    setTimeout(doScroll, 50);
+    setTimeout(doScroll, 150);
+    setTimeout(doScroll, 350);
   }
 
   function switchVersion(v) {
@@ -1131,6 +1131,7 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
     video.src = v === 1 ? V1_SRC : V2_SRC;
     video.muted = muted;
     video.load();
+    video.blur();
     video.play().catch(function(){});
     if (soundBtn) soundBtn.textContent = muted ? '🔇' : '🔊';
     scrollToSlideTop();
@@ -1171,6 +1172,7 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
       video3.src = v === 1 ? S3_V1_SRC : S3_V2_SRC;
       video3.muted = muted3;
       video3.load();
+      video3.blur();
       video3.play().catch(function(){});
       if (soundBtn3) soundBtn3.textContent = muted3 ? '🔇' : '🔊';
     }
@@ -1212,6 +1214,7 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
       video4.src = v === 1 ? S4_V1_SRC : S4_V2_SRC;
       video4.muted = muted4;
       video4.load();
+      video4.blur();
       video4.play().catch(function(){});
       if (soundBtn4) soundBtn4.textContent = muted4 ? '🔇' : '🔊';
     }
@@ -1254,6 +1257,7 @@ Vote in the poll now. Let's build this together. 🙌🏽🙌🏾🙌🏿</p>
       video5.src = newSrc;
       video5.muted = muted5;
       video5.load();
+      video5.blur();
       video5.play().catch(function(){});
       if (soundBtn5) soundBtn5.textContent = muted5 ? '🔇' : '🔊';
     }
