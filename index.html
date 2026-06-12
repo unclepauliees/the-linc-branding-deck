@@ -183,11 +183,11 @@ html, body {
   overflow: hidden;
 }
 .pg-body-left {
-  width: 47%;
+  width: 50%;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  padding: 12px 1.5vw 20px 2.5vw;
+  justify-content: flex-start;
+  padding: 12px 1vw 12px 0;
 }
 .pg-body-right {
   flex: 1;
@@ -361,39 +361,49 @@ html, body {
 
 /* ═══════════════════════════════════════════════════════
    PHOTO PHONE FRAME (slides 2–5)
-   PNG: 639×1372 → aspect 0.4657
-   Screen content area (Instagram post square) — pixel-measured from 639×1372 PNG:
-     top: 12.1% (y=166), left: 27.9% (x=178), width: 52.3% (334px), height: 32.4% (444px)
+   PNG 639×1372. Cropped to phone-only region (y 0–820 of PNG)
+   so the wrist / dead zone below is hidden.
+   Crop box aspect: 639/820.
+   PNG img is rendered at 167.32% height (=1372/820) so the
+   full PNG fills top-to-bottom; overflow-hidden clips the wrist.
+   Video slot pixel-measured against the 639×820 crop box:
+     left: 27.86% (x=178/639)
+     top: 20.24% (y=166/820)
+     width: 52.27% (334/639)
+     height: 54.15% (444/820)
+     slot bottom: 74.39%
 ═══════════════════════════════════════════════════════ */
 .phone-frame {
   position: relative;
-  aspect-ratio: 639 / 1372;
-  height: min(calc(100vh - 120px), 860px);
+  overflow: hidden;
+  aspect-ratio: 639 / 820;
+  height: min(calc(100vh - 150px), 920px);
   width: auto;
   flex-shrink: 0;
 }
 .phone-frame-img {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 167.32%;
   display: block;
   pointer-events: none;
   user-select: none;
 }
 .phone-frame-video {
   position: absolute;
-  top: 12.1%;
-  left: 27.9%;
-  width: 52.3%;
-  height: 32.4%;
+  top: 20.24%;
+  left: 27.86%;
+  width: 52.27%;
+  height: 54.15%;
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
 }
 .phone-frame .sound-btn {
-  top: calc(12.1% + 32.4% - 34px);
-  left: calc(27.9% + 52.3% - 36px);
+  top: calc(74.39% - 38px);
+  left: calc(80.13% - 40px);
   right: auto;
   bottom: auto;
   z-index: 10;
@@ -640,8 +650,8 @@ html, body {
     border-width: 6px;
   }
   .phone-frame {
-    aspect-ratio: 639 / 1372;
-    height: min(calc(100dvh - 160px), 600px);
+    aspect-ratio: 639 / 820;
+    height: min(calc(100dvh - 170px), 640px);
     width: auto;
   }
 
