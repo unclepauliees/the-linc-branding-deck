@@ -366,8 +366,8 @@ html, body {
 ═══════════════════════════════════════════════════════ */
 .phone-frame {
   position: relative;
-  height: clamp(300px, 55vh, 520px);
-  width: calc(clamp(300px, 55vh, 520px) * 0.4657);
+  height: clamp(420px, 78vh, 760px);
+  width: calc(clamp(420px, 78vh, 760px) * 0.4657);
   flex-shrink: 0;
 }
 .phone-frame-img {
@@ -380,18 +380,18 @@ html, body {
 }
 .phone-frame-video {
   position: absolute;
-  top: 19%;
+  top: 14%;
   left: 9%;
   width: 82%;
-  height: 37%;
+  height: 47%;
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
 }
 .phone-frame .sound-btn {
-  bottom: 44%;
+  top: calc(14% + 47% - 36px);
   right: 11%;
-  top: auto;
+  bottom: auto;
   left: auto;
   z-index: 10;
 }
