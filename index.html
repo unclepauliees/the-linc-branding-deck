@@ -362,41 +362,40 @@ html, body {
 /* ═══════════════════════════════════════════════════════
    PHOTO PHONE FRAME (slides 2–5)
    PNG: 639×1372 → aspect 0.4657
-   Screen content area (Instagram post square):
-     top ≈ 17.5%, left ≈ 12.5%, width ≈ 75%, height ≈ 44%
+   Screen content area (Instagram post square) — pixel-measured from 639×1372 PNG:
+     top: 12.1% (y=166), left: 27.9% (x=178), width: 52.3% (334px), height: 32.4% (444px)
 ═══════════════════════════════════════════════════════ */
 .phone-frame {
   position: relative;
-  /* Height-driven: fill the panel vertically, width follows aspect */
-  height: calc(100vh - 120px);
-  max-height: 860px;
-  width: calc((100vh - 120px) * 0.4657);
-  max-width: calc(860px * 0.4657);
+  aspect-ratio: 639 / 1372;
+  height: min(calc(100vh - 120px), 860px);
+  width: auto;
   flex-shrink: 0;
 }
 .phone-frame-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   display: block;
   pointer-events: none;
   user-select: none;
 }
 .phone-frame-video {
   position: absolute;
-  top: 17.5%;
-  left: 12.5%;
-  width: 75%;
-  height: 44%;
+  top: 12.1%;
+  left: 27.9%;
+  width: 52.3%;
+  height: 32.4%;
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
 }
 .phone-frame .sound-btn {
-  top: calc(17.5% + 44% - 30px);
-  right: 13%;
+  top: calc(12.1% + 32.4% - 34px);
+  left: calc(27.9% + 52.3% - 36px);
+  right: auto;
   bottom: auto;
-  left: auto;
   z-index: 10;
 }
 
@@ -641,8 +640,9 @@ html, body {
     border-width: 6px;
   }
   .phone-frame {
+    aspect-ratio: 639 / 1372;
     height: min(calc(100dvh - 160px), 600px);
-    width: calc(min(calc(100dvh - 160px), 600px) * 0.4657);
+    width: auto;
   }
 
   .pg-body-right {
