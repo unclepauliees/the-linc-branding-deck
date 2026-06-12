@@ -359,6 +359,43 @@ html, body {
   line-height: 1;
 }
 
+/* ═══════════════════════════════════════════════════════
+   PHOTO PHONE FRAME (slides 2–5)
+   PNG: 639×1372 → aspect 0.4657
+   Content area in PNG: top≈19%, left≈9%, w≈82%, h≈37%
+═══════════════════════════════════════════════════════ */
+.phone-frame {
+  position: relative;
+  height: clamp(300px, 55vh, 520px);
+  width: calc(clamp(300px, 55vh, 520px) * 0.4657);
+  flex-shrink: 0;
+}
+.phone-frame-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+.phone-frame-video {
+  position: absolute;
+  top: 19%;
+  left: 9%;
+  width: 82%;
+  height: 37%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+.phone-frame .sound-btn {
+  bottom: 44%;
+  right: 11%;
+  top: auto;
+  left: auto;
+  z-index: 10;
+}
+
 /* Engagement row */
 .ig-engagerow {
   display: flex;
@@ -599,6 +636,10 @@ html, body {
     border-radius: 34px;
     border-width: 6px;
   }
+  .phone-frame {
+    height: min(calc(100dvh - 160px), 600px);
+    width: calc(min(calc(100dvh - 160px), 600px) * 0.4657);
+  }
 
   .pg-body-right {
     width: 100%;
@@ -674,55 +715,12 @@ html, body {
 
   <div class="pg-body">
     <div class="pg-body-left">
-      <div class="phone">
-        <div class="ph-notch-row"><div class="ph-notch"></div></div>
-        <div class="ph-status">
-          <span class="ph-time">1:24</span>
-          <div class="ph-icons">
-            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
-            <span class="ph-wifi">WiFi</span>
-            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
-          </div>
-        </div>
-        <div class="ig-appbar">
-          <div class="ig-back">‹</div>
-          <div class="ig-title-wrap">
-            <div class="ig-apptitle">Posts</div>
-            <div class="ig-apphandle">newrochelleny</div>
-          </div>
-          <div class="ig-moreicon">···</div>
-        </div>
-        <div class="ig-postrow">
-          <div class="ig-avi"></div>
-          <div class="ig-postmeta">
-            <div class="ig-username">newrochelleny ✓</div>
-            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
-        <div class="ig-media">
-          <video id="linc-video" autoplay="" loop="" muted="" playsinline="" style="width:100%;height:100%;display:block;object-fit:cover;">
-            <source src="mq5989hk-LINC-Cinematic-Campaign-Reel-_1_.mp4" type="video/mp4">
-          </video>
-          <button class="sound-btn" id="sound-btn" title="Toggle sound" aria-label="Toggle sound">🔇</button>
-        </div>
-        <div class="ig-engagerow">
-          <div class="ig-left-icons">
-            <span class="ig-icoitem">♡</span>
-            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
-            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
-          </div>
-          <span class="ig-bookmark">△</span>
-        </div>
-        <div class="ig-likedby">Liked by b_yunique and others</div>
-        <div class="ig-stub">
-          <div class="ig-stub-avi"></div>
-          <div class="ig-stub-meta">
-            <div class="ig-stub-user">newrochelleny ✓</div>
-            <div class="ig-stub-date">April 10</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
+      <div class="phone-frame">
+        <img src="mqb29yba-Copy-of-THE-LINC-Branding-Project_IG-Logo-Contest_Post-Creative_v2.png" class="phone-frame-img" alt="">
+        <video id="linc-video" autoplay loop muted playsinline class="phone-frame-video">
+          <source src="mq5989hk-LINC-Cinematic-Campaign-Reel-_1_.mp4" type="video/mp4">
+        </video>
+        <button class="sound-btn" id="sound-btn" title="Toggle sound" aria-label="Toggle sound">🔇</button>
       </div>
     </div>
     <div class="pg-body-right content-zone" id="page-2-content">
@@ -760,55 +758,12 @@ Because this is your LINC. From the ground up. 💜🧡💚</div>
 
   <div class="pg-body">
     <div class="pg-body-left">
-      <div class="phone">
-        <div class="ph-notch-row"><div class="ph-notch"></div></div>
-        <div class="ph-status">
-          <span class="ph-time">1:24</span>
-          <div class="ph-icons">
-            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
-            <span class="ph-wifi">WiFi</span>
-            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
-          </div>
-        </div>
-        <div class="ig-appbar">
-          <div class="ig-back">‹</div>
-          <div class="ig-title-wrap">
-            <div class="ig-apptitle">Posts</div>
-            <div class="ig-apphandle">newrochelleny</div>
-          </div>
-          <div class="ig-moreicon">···</div>
-        </div>
-        <div class="ig-postrow">
-          <div class="ig-avi"></div>
-          <div class="ig-postmeta">
-            <div class="ig-username">newrochelleny ✓</div>
-            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
-        <div class="ig-media">
-          <video id="linc-video-3" autoplay loop muted playsinline style="width:100%;height:100%;display:block;object-fit:cover;">
-            <source src="mq5bqdv0-THE-LINC-Campaign---Reference-Style-Recreation-_1_.mp4" type="video/mp4">
-          </video>
-          <button class="sound-btn" id="sound-btn-3" title="Toggle sound" aria-label="Toggle sound">🔇</button>
-        </div>
-        <div class="ig-engagerow">
-          <div class="ig-left-icons">
-            <span class="ig-icoitem">♡</span>
-            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
-            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
-          </div>
-          <span class="ig-bookmark">△</span>
-        </div>
-        <div class="ig-likedby">Liked by b_yunique and others</div>
-        <div class="ig-stub">
-          <div class="ig-stub-avi"></div>
-          <div class="ig-stub-meta">
-            <div class="ig-stub-user">newrochelleny ✓</div>
-            <div class="ig-stub-date">April 10</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
+      <div class="phone-frame">
+        <img src="mqb29yba-Copy-of-THE-LINC-Branding-Project_IG-Logo-Contest_Post-Creative_v2.png" class="phone-frame-img" alt="">
+        <video id="linc-video-3" autoplay loop muted playsinline class="phone-frame-video">
+          <source src="mq5bqdv0-THE-LINC-Campaign---Reference-Style-Recreation-_1_.mp4" type="video/mp4">
+        </video>
+        <button class="sound-btn" id="sound-btn-3" title="Toggle sound" aria-label="Toggle sound">🔇</button>
       </div>
     </div>
     <div class="pg-body-right content-zone" id="page-3-content">
@@ -845,55 +800,12 @@ Vote now — this is your moment to shape our shared civic space. 🏙️💜</d
 
   <div class="pg-body">
     <div class="pg-body-left">
-      <div class="phone">
-        <div class="ph-notch-row"><div class="ph-notch"></div></div>
-        <div class="ph-status">
-          <span class="ph-time">1:24</span>
-          <div class="ph-icons">
-            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
-            <span class="ph-wifi">WiFi</span>
-            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
-          </div>
-        </div>
-        <div class="ig-appbar">
-          <div class="ig-back">‹</div>
-          <div class="ig-title-wrap">
-            <div class="ig-apptitle">Posts</div>
-            <div class="ig-apphandle">newrochelleny</div>
-          </div>
-          <div class="ig-moreicon">···</div>
-        </div>
-        <div class="ig-postrow">
-          <div class="ig-avi"></div>
-          <div class="ig-postmeta">
-            <div class="ig-username">newrochelleny ✓</div>
-            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
-        <div class="ig-media" style="position:relative;">
-          <video id="linc-video-4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
-            <source src="mq5byyv2-The-Linc-IG-Contest---Option-2-w_Music-_1_.mp4" type="video/mp4">
-          </video>
-          <button id="sound-btn-4" style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;" aria-label="Toggle sound">🔇</button>
-        </div>
-        <div class="ig-engagerow">
-          <div class="ig-left-icons">
-            <span class="ig-icoitem">♡</span>
-            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
-            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
-          </div>
-          <span class="ig-bookmark">△</span>
-        </div>
-        <div class="ig-likedby">Liked by b_yunique and others</div>
-        <div class="ig-stub">
-          <div class="ig-stub-avi"></div>
-          <div class="ig-stub-meta">
-            <div class="ig-stub-user">newrochelleny ✓</div>
-            <div class="ig-stub-date">April 10</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
+      <div class="phone-frame">
+        <img src="mqb29yba-Copy-of-THE-LINC-Branding-Project_IG-Logo-Contest_Post-Creative_v2.png" class="phone-frame-img" alt="">
+        <video id="linc-video-4" autoplay loop muted playsinline class="phone-frame-video">
+          <source src="mq5byyv2-The-Linc-IG-Contest---Option-2-w_Music-_1_.mp4" type="video/mp4">
+        </video>
+        <button class="sound-btn" id="sound-btn-4" title="Toggle sound" aria-label="Toggle sound">🔇</button>
       </div>
     </div>
     <div class="pg-body-right content-zone" id="page-4-content">
@@ -926,55 +838,12 @@ Together, we're building something special. 🙌</p>
 
   <div class="pg-body">
     <div class="pg-body-left">
-      <div class="phone">
-        <div class="ph-notch-row"><div class="ph-notch"></div></div>
-        <div class="ph-status">
-          <span class="ph-time">1:24</span>
-          <div class="ph-icons">
-            <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
-            <span class="ph-wifi">WiFi</span>
-            <div class="ph-battery"><div class="ph-battery-fill"></div></div>
-          </div>
-        </div>
-        <div class="ig-appbar">
-          <div class="ig-back">‹</div>
-          <div class="ig-title-wrap">
-            <div class="ig-apptitle">Posts</div>
-            <div class="ig-apphandle">newrochelleny</div>
-          </div>
-          <div class="ig-moreicon">···</div>
-        </div>
-        <div class="ig-postrow">
-          <div class="ig-avi"></div>
-          <div class="ig-postmeta">
-            <div class="ig-username">newrochelleny ✓</div>
-            <div class="ig-audiolabel">♬ newrochelleny · Original audio</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
-        <div class="ig-media" style="position:relative;">
-          <video id="linc-video-5" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
-            <source src="mq5c9wg7-LINC-Bold-Ballot-Campaign-Video---Music-Only.mp4" type="video/mp4">
-          </video>
-          <button id="sound-btn-5" style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;" aria-label="Toggle sound">🔇</button>
-        </div>
-        <div class="ig-engagerow">
-          <div class="ig-left-icons">
-            <span class="ig-icoitem">♡</span>
-            <span class="ig-icoitem">○<span class="ig-icocount">&nbsp;2</span></span>
-            <span class="ig-icoitem">↗<span class="ig-icocount">&nbsp;1</span></span>
-          </div>
-          <span class="ig-bookmark">△</span>
-        </div>
-        <div class="ig-likedby">Liked by b_yunique and others</div>
-        <div class="ig-stub">
-          <div class="ig-stub-avi"></div>
-          <div class="ig-stub-meta">
-            <div class="ig-stub-user">newrochelleny ✓</div>
-            <div class="ig-stub-date">April 10</div>
-          </div>
-          <div class="ig-dotdotdot">···</div>
-        </div>
+      <div class="phone-frame">
+        <img src="mqb29yba-Copy-of-THE-LINC-Branding-Project_IG-Logo-Contest_Post-Creative_v2.png" class="phone-frame-img" alt="">
+        <video id="linc-video-5" autoplay loop muted playsinline class="phone-frame-video">
+          <source src="mq5c9wg7-LINC-Bold-Ballot-Campaign-Video---Music-Only.mp4" type="video/mp4">
+        </video>
+        <button class="sound-btn" id="sound-btn-5" title="Toggle sound" aria-label="Toggle sound">🔇</button>
       </div>
     </div>
     <div class="pg-body-right content-zone" id="page-5-content">
