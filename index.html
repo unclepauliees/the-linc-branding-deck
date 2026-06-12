@@ -183,11 +183,11 @@ html, body {
   overflow: hidden;
 }
 .pg-body-left {
-  width: 33%;
+  width: 47%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: clamp(18px, 3.5vh, 36px) 12px 24px 3vw;
+  padding: 12px 1.5vw 20px 2.5vw;
 }
 .pg-body-right {
   flex: 1;
@@ -362,12 +362,16 @@ html, body {
 /* ═══════════════════════════════════════════════════════
    PHOTO PHONE FRAME (slides 2–5)
    PNG: 639×1372 → aspect 0.4657
-   Content area in PNG: top≈19%, left≈9%, w≈82%, h≈37%
+   Screen content area (Instagram post square):
+     top ≈ 17.5%, left ≈ 12.5%, width ≈ 75%, height ≈ 44%
 ═══════════════════════════════════════════════════════ */
 .phone-frame {
   position: relative;
-  height: clamp(420px, 78vh, 760px);
-  width: calc(clamp(420px, 78vh, 760px) * 0.4657);
+  /* Height-driven: fill the panel vertically, width follows aspect */
+  height: calc(100vh - 120px);
+  max-height: 860px;
+  width: calc((100vh - 120px) * 0.4657);
+  max-width: calc(860px * 0.4657);
   flex-shrink: 0;
 }
 .phone-frame-img {
@@ -380,17 +384,17 @@ html, body {
 }
 .phone-frame-video {
   position: absolute;
-  top: 14%;
-  left: 9%;
-  width: 82%;
-  height: 47%;
+  top: 17.5%;
+  left: 12.5%;
+  width: 75%;
+  height: 44%;
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
 }
 .phone-frame .sound-btn {
-  top: calc(14% + 47% - 36px);
-  right: 11%;
+  top: calc(17.5% + 44% - 30px);
+  right: 13%;
   bottom: auto;
   left: auto;
   z-index: 10;
@@ -503,7 +507,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: clamp(18px, 3.5vh, 36px) 5vw 5vh 4vw;
+  padding: clamp(14px, 2.5vh, 28px) 3vw 4vh 2.5vw;
   height: 100%;
 }
 .caption-label {
